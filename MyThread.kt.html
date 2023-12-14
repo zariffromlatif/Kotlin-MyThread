@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>MyThread.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MyThread.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">import java</span><span class="s1">.</span><span class="s0">lang</span><span class="s1">.</span><span class="s0">Exception</span>
+
+
+<span class="s2">fun </span><span class="s0">main</span><span class="s1">(</span><span class="s0">args:Array</span><span class="s1">&lt;</span><span class="s0">String</span><span class="s1">&gt;){</span>
+    <span class="s2">var </span><span class="s0">t1 </span><span class="s1">= </span><span class="s0">thread</span><span class="s1">(</span><span class="s3">&quot;thread1&quot;</span><span class="s1">)</span>
+    <span class="s0">t1</span><span class="s1">.</span><span class="s0">start</span><span class="s1">()</span>
+
+    <span class="s2">var </span><span class="s0">t2 </span><span class="s1">= </span><span class="s0">thread</span><span class="s1">(</span><span class="s3">&quot;thread2&quot;</span><span class="s1">)</span>
+    <span class="s0">t2</span><span class="s1">.</span><span class="s0">start</span><span class="s1">()</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s3">&quot;  thread is run&quot;</span><span class="s1">)</span>
+
+    <span class="s2">var </span><span class="s0">t3 </span><span class="s1">= </span><span class="s0">thread</span><span class="s1">(</span><span class="s3">&quot;thread3&quot;</span><span class="s1">)</span>
+    <span class="s0">t3</span><span class="s1">.</span><span class="s0">start</span><span class="s1">()</span>
+    <span class="s0">t3</span><span class="s1">.</span><span class="s0">join</span><span class="s1">()</span>
+    <span class="s0">println</span><span class="s1">(</span><span class="s3">&quot;  thread is run&quot;</span><span class="s1">)</span>
+
+<span class="s1">}</span>
+
+<span class="s2">class </span><span class="s0">thread:Thread</span><span class="s1">{</span>
+    <span class="s2">var </span><span class="s0">ThreadName:String?</span><span class="s1">=</span><span class="s2">null</span>
+    <span class="s0">constructor</span><span class="s1">(</span><span class="s0">ThreadName: String</span><span class="s1">)</span><span class="s0">:</span><span class="s2">super</span><span class="s1">(){</span>
+        <span class="s2">this</span><span class="s1">.</span><span class="s0">ThreadName</span><span class="s1">= </span><span class="s0">ThreadName</span>
+        <span class="s0">println</span><span class="s1">(</span><span class="s3">&quot;</span><span class="s2">${this</span><span class="s1">.</span><span class="s0">ThreadName</span><span class="s2">} </span><span class="s3">is started&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s0">override </span><span class="s2">fun </span><span class="s0">run</span><span class="s1">(){</span>
+        <span class="s4">//Write Thread</span>
+        <span class="s2">var </span><span class="s0">count </span><span class="s1">= </span><span class="s5">0</span>
+        <span class="s2">while</span><span class="s1">(</span><span class="s0">count</span><span class="s1">&lt;</span><span class="s5">10</span><span class="s1">){</span>
+            <span class="s0">println</span><span class="s1">(</span><span class="s3">&quot;</span><span class="s2">$</span><span class="s0">ThreadName </span><span class="s3">Count:</span><span class="s2">$</span><span class="s0">count</span><span class="s3">&quot;</span><span class="s1">)</span>
+            <span class="s0">count</span><span class="s1">++</span>
+            <span class="s2">try </span><span class="s1">{</span>
+                <span class="s0">Thread</span><span class="s1">.</span><span class="s0">sleep</span><span class="s1">(</span><span class="s5">1000</span><span class="s1">)</span>
+            <span class="s1">}</span><span class="s0">catch</span><span class="s1">(</span><span class="s0">ex:Exception</span><span class="s1">){</span>
+                <span class="s0">print</span><span class="s1">(</span><span class="s0">ex</span><span class="s1">.</span><span class="s0">message</span><span class="s1">)</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
